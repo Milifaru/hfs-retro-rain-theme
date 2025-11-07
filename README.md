@@ -6,9 +6,8 @@ Retro Rain is a visual / interactive theme plugin for [HTTP File Server (HFS) 3.
 
 - **Dynamic rain renderer** with configurable pixel size, gravity, wind, spawn caps, edge spawning, and background image handling.
 - **UI theming hooks** that recolor top menus, breadcrumbs, and file listings to blend with the retro aesthetic.
-- **Gold spray mode / mini-game** triggered from the in-page controls with countdown, scoring, leaderboard saving/loading, toilet target artwork, and boost mechanics.
 - **Leaderboard + API helpers** (`serverLoadScores` / `serverSaveScore`) ready for HFS custom REST endpoints.
-- **Safe toggles** for precipitation, gold mode, and page overlays, including keyboard handling and accessibility fallbacks.
+- **Safe toggles** for precipitation and page overlays, including keyboard handling and accessibility fallbacks.
 
 ## Repository Layout
 
@@ -33,7 +32,7 @@ Add additional art (e.g., `preview.png`) at repo root so HFS can display it via 
 
 1. Copy the contents of `dist/` into your HFS `plugins` directory (e.g., `hfs/plugins/retro-rain`), or symlink `dist/` there during development.
 2. Restart HFS or enable the plugin from the UI. HFS automatically loads `dist/plugin.js`.
-3. Configure options in **Settings → Plugins → Retro Rain**, including background image sources, UI colors, gold mode availability, etc.
+3. Configure options in **Settings → Plugins → Retro Rain**, including background image sources, UI colors, and playback intensity.
 4. If you use the leaderboard, implement the `loadScores` / `saveScore` REST endpoints referenced in `public/rain.js`.
 
 ## Development

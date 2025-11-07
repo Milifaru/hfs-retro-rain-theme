@@ -5,8 +5,8 @@ exports.description = "Retro rain theme by Milifaru for HFS";
 exports.isTheme = "dark";
 exports.version = 4.2;
 exports.apiRequired = [8, 12.94];
-exports.repo = "Milifaru/hfs-retro-rain";
-exports.preview = ["https://raw.githubusercontent.com/Milifaru/hfs-retro-rain/main/preview.png"];
+exports.repo = "Milifaru/hfs-retro-rain-theme";
+exports.preview = ["https://raw.githubusercontent.com/Milifaru/hfs-retro-rain-theme/main/preview.png"];
 
 exports.config = {
   pixelSize: { type: "number", label: "Pixel size", defaultValue: 3, min: 1, max: 8, frontend: true },
