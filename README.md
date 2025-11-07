@@ -23,10 +23,13 @@ retro-rain/
 │  ├─ dev-plugins.md      # Snapshot of official publishing guide
 │  └─ PUBLISHING.md       # Repo-specific instructions
 ├─ README.md
-└─ LICENSE
+├─ LICENSE
+└─ preview.png
 ```
 
-Add additional art (e.g., `preview.png`) at repo root so HFS can display it via `exports.preview`. When packaging for distribution, zip the `dist/` folder contents.
+## Preview
+
+![Retro Rain preview](preview.png)
 
 ## Installation (HFS)
 
