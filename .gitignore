@@ -1,0 +1,20 @@
+# OS-generated
+.DS_Store
+Thumbs.db
+
+# Node / tooling caches
+node_modules/
+npm-debug.log*
+yarn-error.log
+pnpm-debug.log
+
+# Build artifacts
+*.log
+.build/
+.tmp/
+cache/
+docs/
+
+# HFS runtime files
+*.bak
+*.tmp
