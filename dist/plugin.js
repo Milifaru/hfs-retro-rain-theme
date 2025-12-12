@@ -3,7 +3,7 @@
 
 exports.description = "Retro rain theme by Milifaru for HFS";
 exports.isTheme = "dark";
-exports.version = 4.2;
+exports.version = 4.3;
 exports.apiRequired = [8, 12.94];
 exports.repo = "Milifaru/hfs-retro-rain-theme";
 exports.preview = ["https://raw.githubusercontent.com/Milifaru/hfs-retro-rain-theme/main/preview.png"];
@@ -101,14 +101,34 @@ exports.frontend_css = "rain.css";
 const fs = require('fs');
 const path = require('path');
 let _apiRef = null;
-exports.init = function(api){ _apiRef = api; };
+const LEGACY_SCORE_FILE = path.join(__dirname, 'leaderboard.json');
+let _scoreFile = LEGACY_SCORE_FILE;
+exports.init = function(api){
+  _apiRef = api;
+  _scoreFile = path.join(api.storageDir || __dirname, 'leaderboard.json');
+  migrateLegacyScores();
+};
 
-const SCORE_FILE = path.join(__dirname, 'leaderboard.json');
 function readScores(){
-  try { return JSON.parse(fs.readFileSync(SCORE_FILE,'utf8')); } catch(e){ return []; }
+  const file = _scoreFile;
+  try { return JSON.parse(fs.readFileSync(file,'utf8')); } catch(e){ return []; }
 }
 function writeScores(list){
-  try { fs.writeFileSync(SCORE_FILE, JSON.stringify(list, null, 2)); } catch(e) {}
+  const file = _scoreFile;
+  try {
+    fs.mkdirSync(path.dirname(file), { recursive: true });
+    fs.writeFileSync(file, JSON.stringify(list, null, 2));
+  } catch(e) {}
+}
+function migrateLegacyScores(){
+  if (!_apiRef?.storageDir) return;
+  if (LEGACY_SCORE_FILE === _scoreFile) return;
+  if (!fs.existsSync(LEGACY_SCORE_FILE)) return;
+  if (fs.existsSync(_scoreFile)) return;
+  try {
+    fs.mkdirSync(path.dirname(_scoreFile), { recursive: true });
+    fs.copyFileSync(LEGACY_SCORE_FILE, _scoreFile);
+  } catch(e) {}
 }
 
 exports.customRest = {
